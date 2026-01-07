@@ -36,3 +36,4 @@ jobs:
           upwind_client_secret: ${{ secrets.UPWIND_CLIENT_SECRET }}
           docker_image: 'hello-world:latest'
           pull_image: true
+          upwind_uri: upwind.dev
