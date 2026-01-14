@@ -4,12 +4,16 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build-and-scan:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Upwind Security ShiftLeft Scan
         uses: upwindsecurity/shiftleft-create-image-scan-event-action@main
         with:
@@ -17,3 +21,4 @@ jobs:
           upwind_client_secret: ${{ secrets.UPWIND_CLIENT_SECRET }}
           docker_image: 'vulnerables/web-dvwa:latest'
           pull_image: true
+          upwind_uri: upwind.dev
