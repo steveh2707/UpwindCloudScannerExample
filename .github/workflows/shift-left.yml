@@ -24,6 +24,10 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: Print Docker config (redacted)
+        run: |
+          jq '.auths[].auth = "***REDACTED***"' $HOME/.docker/config.json
+
       - name: Upwind Security ShiftLeft Scan
         uses: upwindsecurity/shiftleft-create-image-scan-event-action@main
         with:
