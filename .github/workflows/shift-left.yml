@@ -13,18 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: us-east-1
-
-      - name: Login to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v2
-        with:
-          registries: "693339160499"
+          username: steveh2707
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Print Docker config (redacted)
         run: |
@@ -35,6 +28,6 @@ jobs:
         with:
           upwind_client_id: ${{ secrets.UPWIND_CLIENT_ID }}
           upwind_client_secret: ${{ secrets.UPWIND_CLIENT_SECRET }}
-          docker_image: '693339160499.dkr.ecr.us-east-1.amazonaws.com/cgr.dev/upwind.io/adoptium-jdk-fips:latest'
+          docker_image: 'steveh2707/treble-node-api:latest'
           pull_image: true
           upwind_uri: upwind.dev
