@@ -23,6 +23,8 @@ jobs:
 
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registries: "693339160499"
 
       - name: Print Docker config (redacted)
         run: |
