@@ -23,6 +23,13 @@ jobs:
         run: |
           jq '.auths[].auth = "***REDACTED***"' $HOME/.docker/config.json
 
+      - name: Print Environment
+        run: |
+          echo "whoami=$(whoami)"
+          echo "HOME=$HOME"
+          echo "DOCKER_CONFIG=$DOCKER_CONFIG"
+          id
+
       - name: Upwind Security ShiftLeft Scan
         uses: upwindsecurity/shiftleft-create-image-scan-event-action@AG-0_add_docker_config_path_var
         with:
