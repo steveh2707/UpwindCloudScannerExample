@@ -19,20 +19,16 @@ jobs:
           username: steveh2707
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Print Docker config (redacted)
-        run: |
-          jq '.auths[].auth = "***REDACTED***"' $HOME/.docker/config.json
-
-      - name: Print Environment
-        run: |
-          echo "whoami=$(whoami)"
-          echo "HOME=$HOME"
-          echo "DOCKER_CONFIG=$DOCKER_CONFIG"
-          jq '.auths[].auth = "***REDACTED***"' /home/runner/.docker/config.json
-          
-          ls /Users/runner/.docker
-          jq '.auths[].auth = "***REDACTED***"' /Users/runner/.docker/config.json
-          id
+#      - name: Print Docker config (redacted)
+#        run: |
+#          jq '.auths[].auth = "***REDACTED***"' $HOME/.docker/config.json
+#
+#      - name: Print Environment
+#        run: |
+#          echo "whoami=$(whoami)"
+#          echo "HOME=$HOME"
+#          echo "DOCKER_CONFIG=$DOCKER_CONFIG"
+#          jq '.auths[].auth = "***REDACTED***"' /home/runner/.docker/config.json
 
       - name: Upwind Security ShiftLeft Scan
         uses: upwindsecurity/shiftleft-create-image-scan-event-action@AG-0_add_docker_config_path_var
@@ -40,6 +36,6 @@ jobs:
           upwind_client_id: ${{ secrets.UPWIND_CLIENT_ID }}
           upwind_client_secret: ${{ secrets.UPWIND_CLIENT_SECRET }}
           docker_image: 'steveh2707/treble-node-api:latest'
-#          docker_config_path: $HOME/.docker
+          docker_config_path: $HOME/.docker
           pull_image: true
           upwind_uri: upwind.dev
