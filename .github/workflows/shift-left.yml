@@ -24,7 +24,7 @@ jobs:
           jq '.auths[].auth = "***REDACTED***"' $HOME/.docker/config.json
 
       - name: Upwind Security ShiftLeft Scan
-        uses: upwindsecurity/shiftleft-create-image-scan-event-action@main
+        uses: upwindsecurity/shiftleft-create-image-scan-event-action@AG-0_add_docker_config_path_var
         with:
           upwind_client_id: ${{ secrets.UPWIND_CLIENT_ID }}
           upwind_client_secret: ${{ secrets.UPWIND_CLIENT_SECRET }}
