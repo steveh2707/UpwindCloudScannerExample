@@ -21,4 +21,4 @@ jobs:
           upwind_client_secret: ${{ secrets.UPWIND_CLIENT_SECRET }}
           docker_image: 'vulnerables/web-dvwa:latest'
           pull_image: true
-          upwind_uri: upwind.dev
+          upwind_uri: upwind.io
